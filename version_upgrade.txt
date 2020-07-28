@@ -1,5 +1,0 @@
---- Spring WebClient vs. RestTemplate with Blocking IO và Non Blocking
-https://www.baeldung.com/spring-webclient-resttemplate
-
---- HTTP Client with java 11
-https://openjdk.java.net/groups/net/httpclient/intro.html
