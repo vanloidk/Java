@@ -3,3 +3,6 @@ https://www.baeldung.com/spring-webclient-resttemplate
 
 --- HTTP Client with java 11
 https://openjdk.java.net/groups/net/httpclient/intro.html
+
+--- with java 8: using LocalDate & LocalTime instead of Date & Calander 
+https://www.baeldung.com/java-8-date-time-intro
