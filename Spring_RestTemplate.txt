@@ -1,0 +1,2 @@
+---How to Perform HTTP Calls using Spring RestTemplate
+https://medium.com/javarevisited/how-to-perform-http-calls-using-spring-resttemplate-d29116cd4b5a
