@@ -1,0 +1,35 @@
+-------------- Ví dụ mẫu về thuật toán HMAC
+
+a. Tạo HMAC
+// Khóa bí mật (phải được chia sẻ giữa người gửi và người nhận)
+String secretKey = "00112233445566778899AABBCCDDEEFF";
+// Thông điệp cần xác thực
+String message = "data";
+// Sử dụng SHA-256 làm hàm băm
+String algorithm = "HmacSHA256";
+// Khóa bí mật chuyển đổi thành dạng byte
+byte[] secretKeyBytes = secretKey.getBytes();
+// Tạo một SecretKeySpec từ khóa bí mật
+SecretKeySpec secretKeySpec = new SecretKeySpec(secretKeyBytes,
+algorithm);
+// Khởi tạo đối tượng Mac với thuật toán và khóa bí mật
+Mac mac = Mac.getInstance(algorithm);
+mac.init(secretKeySpec);
+// Tính toán HMAC cho thông điệp
+byte[] hmacBytes = mac.doFinal(message.getBytes());
+// Chuyển mã xác thực sang dạng chuỗi hex
+String hmacHex = bytesToHex(hmacBytes);
+System.out.println("Mã xác thực (HEX): " + hmacHex);
+b. Xác thực HMAC
+// Người nhận nhận được thông điệp và mã xác thực, sau đó kiểm tra xác thực
+Mac receiverMac = Mac.getInstance(algorithm);
+receiverMac.init(secretKeySpec);
+byte[] receivedHmacBytes = receiverMac.doFinal(message.getBytes());
+// Chuyển mã xác thực tính toán sang dạng chuỗi hex
+String receivedHmacHex = bytesToHex(receivedHmacBytes);
+// So sánh mã xác thực tính toán với mã xác thực nhận được
+if (receivedHmacHex.equals(hmacHex)) {
+System.out.println("Thông điệp hợp lệ.");
+} else {
+System.out.println("Thông điệp không hợp lệ.");
+}
